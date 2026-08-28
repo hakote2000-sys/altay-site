@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Altay 2.0 — Minecraft сервер</title>
+  <meta name="description" content="Altay 2.0 — легендарный Minecraft-сервер возвращается: выживание, кланы, боссы, ивенты и смешной вайб." />
+  <style>
+    :root{--bg:#07110a;--panel:#0d1c12;--panel2:#112719;--text:#eef7ef;--muted:#a9b8ad;--accent:#55e86c;--accent2:#a4ff7a;--line:#1d3a26;--shadow:0 20px 70px rgba(0,0,0,.35)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:radial-gradient(circle at 20% 0%,#183524 0,transparent 35%),linear-gradient(180deg,#08120b,#050906 70%);color:var(--text)}
+    a{color:inherit;text-decoration:none} button{font:inherit}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(5,9,6,.72);border-bottom:1px solid rgba(255,255,255,.06)}
+    .navin{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:900;letter-spacing:.08em}.brand b{color:var(--accent)}.links{display:flex;gap:22px;color:var(--muted);font-size:14px}.links a:hover{color:#fff}
+    .hero{padding:92px 0 70px;min-height:76vh;display:grid;align-items:center}.heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--accent2);background:rgba(85,232,108,.07);font-size:13px;font-weight:700}.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)}
+    h1{font-size:clamp(42px,7vw,84px);line-height:.95;margin:20px 0 18px;letter-spacing:-.055em}.lead{font-size:18px;line-height:1.7;color:var(--muted);max-width:760px}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{border:0;border-radius:14px;padding:14px 18px;font-weight:800;cursor:pointer}.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07110a;box-shadow:0 12px 40px rgba(85,232,108,.22)}.secondary{background:#101913;color:#fff;border:1px solid var(--line)}
+    .serverCard{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(18,44,27,.95),rgba(9,20,12,.95));border:1px solid #285536;border-radius:28px;padding:28px;box-shadow:var(--shadow)}.serverCard:before{content:"";position:absolute;inset:-30% auto auto -15%;width:260px;height:260px;border-radius:50%;background:rgba(85,232,108,.13);filter:blur(8px)}.cube{width:160px;aspect-ratio:1;margin:8px auto 30px;border-radius:24px;background:linear-gradient(135deg,#63c551 0 26%,#5d9c46 26% 52%,#75533b 52%);box-shadow:inset -18px -18px 0 rgba(0,0,0,.12),0 28px 80px rgba(0,0,0,.35);transform:rotate(-6deg)}
+    .statrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat{padding:15px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}.stat small{color:var(--muted);display:block;margin-bottom:5px}.stat strong{font-size:19px}.ipbox{margin-top:12px;padding:15px;border-radius:16px;background:#07110a;border:1px dashed #356c44;display:flex;justify-content:space-between;gap:12px;align-items:center}.ip{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:800}.copy{padding:8px 10px;border-radius:10px;border:0;background:#17321f;color:#dfffe5;cursor:pointer}
+    section{padding:72px 0}.sectionTitle{font-size:38px;margin:0 0 12px}.sectionLead{color:var(--muted);margin:0 0 30px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:24px;border-radius:22px;background:rgba(14,29,18,.88);border:1px solid var(--line)}.icon{font-size:28px}.card h3{margin:14px 0 8px}.card p{margin:0;color:var(--muted);line-height:1.6}
+    .announce{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{padding:26px;border-radius:24px;background:rgba(14,29,18,.88);border:1px solid var(--line)}.panel h3{margin:0 0 18px;font-size:24px}.list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.list li{color:#dce8de;line-height:1.55;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);padding:12px 14px;border-radius:14px}.muted{color:var(--muted)}
+    .join{display:grid;grid-template-columns:1fr;gap:20px;padding:30px;border-radius:26px;background:linear-gradient(135deg,#102619,#0b160e);border:1px solid #285536}.steps{display:grid;gap:12px}.step{display:flex;gap:14px;align-items:flex-start;padding:14px;background:rgba(255,255,255,.035);border-radius:14px}.num{width:28px;height:28px;border-radius:9px;background:var(--accent);color:#061008;font-weight:900;display:grid;place-items:center;flex:0 0 auto}
+    .investor{display:grid;grid-template-columns:1fr 1fr;gap:18px}.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(85,232,108,.08);border:1px solid var(--line);color:var(--accent2);font-size:13px;font-weight:700;margin-bottom:12px}
+    footer{padding:34px 0 50px;color:#7f9184;font-size:14px;border-top:1px solid rgba(255,255,255,.06)}
+    @media(max-width:920px){.links{display:none}.hero{padding-top:56px}.heroGrid,.join,.announce,.investor{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.serverCard{margin-top:8px}.sectionTitle{font-size:32px}}
+  </style>
+</head>
+<body>
+  <nav class="nav"><div class="wrap navin"><div class="brand">Altay <b>2.0</b></div><div class="links"><a href="#about">О сервере</a><a href="#launch">Открытие</a><a href="#join">Как зайти</a></div><a class="btn secondary" href="#join">Играть</a></div></nav>
+
+  <main>
+    <section class="hero"><div class="wrap heroGrid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> 🔥 ГРАДИОЗНЕ ПЕРЕТКРЫТИЕ ALTAY2.0 ГultraGPS 🔥</div>
+        <h1>Легендарный серевр<br>опять вазвращается.</h1>
+        <p class="lead">Легендарный Minecraftсеревр Altay возращается! Мы мы мы обовили проект, пеработали бланс и готвили новый сеон. Масштабнее, интереснее, сильне. Ну и рыбала есть.</p>
+        <div class="cta"><a class="btn primary" href="https://workupload.com/file/Z8SYhHZUswS" download>📦 СКАЧАТЬ СБОРУ</a><a class="btn secondary" href="./instructions.html">📖 КАК УСТАНОВИТЬ ЭТО</a><button class="btn secondary" onclick="copyIp()">Скопировать IP</button></div>
+      </div>
+      <aside class="serverCard">
+        <div class="cube" aria-hidden="true"></div>
+        <div class="statrow"><div class="stat"><small>Версия</small><strong>1.21.1</strong></div><div class="stat"><small>Режим</small><strong>Survival + RPG</strong></div></div>
+        <div class="ipbox"><div><small style="color:var(--muted)">IP сервера</small><div class="ip" id="server-ip">altay2gultragps.joinmc.cloud</div></div><button class="copy" onclick="copyIp()">Копировать</button></div>
+      </aside>
+    </div></section>
+
+    <section id="about"><div class="wrap"><h2 class="sectionTitle">⚡ Что вас жёт:</h2><p class="sectionLead">⚡ вас жёт:  ⚡ что ?  Короче ниже написано.</p><div class="cards">
+      <article class="card"><div class="icon">💎</div><h3>лучшеная экономика</h3><p>улучшеная экономика и новые сособы заработка; проффеси, здадaни, достижени и награды. Чтоб стать богатым а не как леха.</p></article>
+      <article class="card"><div class="icon">⚔️</div><h3>обновлённые ланы и ПР</h3><p>обновлённые ланы, войны и рейтигни; салансированное ПР, дуэли и турниры; обижат и унижат будут абсолютно всех.</p></article>
+      <article class="card"><div class="icon">🐟</div><h3>рыбала, боссы и данжи</h3><p>кастомное оружи, брон и зачаровани; уникальнные мобы, боссы и новые дажи; рыбала, фермерство и обновлённые шахы. Данжи где сундук пустой, а мобов почему-то сорок.</p></article>
+    </div></div></section>
+
+    <section id="launch"><div class="wrap"><h2 class="sectionTitle">🎁 В ден открытия:</h2><p class="sectionLead">короче в день открытия будет много всего, если сервер не упадёт.</p><div class="announce">
+      <div class="panel">
+        <h3>⚡ что уже есть:</h3>
+        <ul class="list">
+          <li>💠 готовая сбора и улучшеная экономика;</li>
+          <li>💠 проффеси, здадaни, достижени и награды;</li>
+          <li>💠 обновлённые ланы, войны и рейтигни;</li>
+          <li>💠 салансированное ПР, дуэли и турниры;</li>
+          <li>💠 кастомное оружи, брон и зачаровани;</li>
+          <li>💠 уникальнные мобы, боссы и новые дажи;</li>
+          <li>💠 рыбала, фермерство и обновлённые шахы;</li>
+          <li>💠 новый спав, защита новичков и пиваты;</li>
+          <li>💠 стабильная работа и защита от читеров. ну надеемся.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>🎁 В ден открытия:</h3>
+        <ul class="list">
+          <li>💰 стартовые бонусы и наборы;</li>
+          <li>🎟️ секретные промокоды;</li>
+          <li>🎉 розыгрыши привилегий и валюты;</li>
+          <li>⚔️ ПР-турниры и охота на администрацию;</li>
+          <li>😈 первый мировой босс;</li>
+          <li>🏆 клановые соревнавания;</li>
+          <li>🧭 поиск сокровищ; 🏃 паркур, конкурсы и мини-игры;</li>
+          <li>🎆 обратный отсчёт и фейерверк!</li>
+          <li><strong>📅 КРЫТИЕ: ЗАВТРА  🏔️ ALTAY ВОЗВРАЩАТСЯ! 🔥 МАСШТАБНЕЕ. ИНТЕРЕСНЕ. СИЛНЕ.</strong></li>
+        </ul>
+      </div>
+    </div></div></section>
+
+    <section id="join"><div class="wrap join"><div><h2 class="sectionTitle">Как подключиться</h2><p class="sectionLead">Три шага — и ты уже выбираешь: фармить, воевать или срочно стать легендой местной рыбалки.</p><div class="steps">
+      <div class="step"><span class="num">1</span><div><strong>Запусти Minecraft Java</strong><div style="color:var(--muted);margin-top:4px">Используй совместимую версию 1.21.1.</div></div></div>
+      <div class="step"><span class="num">2</span><div><strong>Открой «Сетевая игра»</strong><div style="color:var(--muted);margin-top:4px">Нажми «Добавить сервер» и не пугайся ответственности.</div></div></div>
+      <div class="step"><span class="num">3</span><div><strong>Вставь IP и заходи</strong><div style="color:var(--muted);margin-top:4px">altayGultra — и вот ты уже в мире, где любой план может закончиться данжем.</div></div></div>
+    </div></div></div></section>
+
+    <section><div class="wrap"><h2 class="sectionTitle">💰 АЛТАЙ ИЩЕТ ИНВЕСТОРА 💰</h2><p class="sectionLead">сервер почти готов, рыбала есть, админы есть, даже леха вроде есть но русских почемуто нет. нужен серезный человек который развитие полюбит хотсенг.</p><div class="investor">
+      <div class="panel">
+        <span class="badge">📈 что уже есть:</span>
+        <h3>что уже есть:</h3>
+        <ul class="list">
+          <li>💠 готовая сбора; 💠 экономика и кланы; 💠 ПП дажи боссы; 💠 рыбала;</li>
+          <li>💠 леха; 💠 желание стать богатыми;</li>
+          <li>💠 и вообще сервер почти готов если не считать все остальное.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <span class="badge">💸 на что нужны деньги сам сервер:</span>
+        <h3>🤝 что получит инвестор:</h3>
+        <ul class="list">
+          <li>💠 реклама; 💠 хостинг; 💠 плагины; 💠 конкурсы; 💠 чтоб леха перестал грустить;</li>
+          <li>💠 роцен; 💠 участи в развитии;</li>
+          <li>💠 статус гавного человека; 💠 уважение рыбалы👍;</li>
+          <li>💠 возможно фотку лехи без вопроса на лице.</li>
+        </ul>
+      </div>
+    </div></div></section>
+  </main>
+
+  <footer><div class="wrap">© 2026 Altay 2.0. Не является официальным продуктом Mojang или Microsoft.</div></footer>
+  <script>
+    function copyIp(){const ip=document.getElementById('server-ip').textContent.trim();navigator.clipboard.writeText(ip).then(()=>{const old=document.title;document.title='IP скопирован!';setTimeout(()=>document.title=old,1300)}).catch(()=>prompt('Скопируй IP:',ip));}
+  </script>
+</body>
+</html>

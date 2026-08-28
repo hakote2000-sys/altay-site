@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Как устанавить сбору — Altay 2.0</title>
+  <meta name="description" content="Очень серезная инструкция как устанавить сбору Altay 2.0 и ниче не сломать." />
+  <style>
+    :root{--bg:#07110a;--panel:#0d1c12;--text:#eef7ef;--muted:#a9b8ad;--accent:#55e86c;--accent2:#a4ff7a;--line:#1d3a26;--shadow:0 20px 70px rgba(0,0,0,.35)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:radial-gradient(circle at 20% 0%,#183524 0,transparent 35%),linear-gradient(180deg,#08120b,#050906 70%);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(960px,calc(100% - 32px));margin:auto}
+    .nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(5,9,6,.72);border-bottom:1px solid rgba(255,255,255,.06)}
+    .navin{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:900;letter-spacing:.08em}.brand b{color:var(--accent)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:14px;padding:14px 18px;font-weight:800;cursor:pointer}
+    .primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07110a;box-shadow:0 12px 40px rgba(85,232,108,.22)}
+    .secondary{background:#101913;color:#fff;border:1px solid var(--line)}
+    .hero{padding:82px 0 34px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--accent2);background:rgba(85,232,108,.07);font-size:13px;font-weight:700}
+    h1{font-size:clamp(42px,7vw,76px);line-height:.95;margin:20px 0 18px;letter-spacing:-.05em}
+    .lead{font-size:18px;line-height:1.7;color:var(--muted);max-width:760px}
+    .steps{display:grid;gap:18px;padding:28px 0 80px}
+    .step{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:24px;border-radius:22px;background:rgba(14,29,18,.9);border:1px solid var(--line);box-shadow:var(--shadow)}
+    .num{width:48px;height:48px;border-radius:15px;background:var(--accent);color:#07110a;font-size:22px;font-weight:900;display:grid;place-items:center}
+    .step h2{margin:3px 0 8px;font-size:24px}
+    .step p{margin:0;color:var(--muted);font-size:17px;line-height:1.65}
+    .warning{margin-top:8px;padding:18px 20px;border-radius:18px;background:rgba(85,232,108,.06);border:1px dashed #356c44;color:#dfffe5;line-height:1.6}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    footer{padding:30px 0 46px;color:#7f9184;font-size:14px;border-top:1px solid rgba(255,255,255,.06)}
+    @media(max-width:640px){.hero{padding-top:54px}.step{grid-template-columns:1fr}.num{width:42px;height:42px}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap navin">
+      <div class="brand">Altay <b>2.0</b></div>
+      <a class="btn secondary" href="./index.html">← НАЗАТ НА СЕРЕВР</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">📦 ИНСТРУКЦИЯ ДЛЯ САМЫХ СМЕЛЫХ</div>
+        <h1>Как устанавить сбору<br>и не взарвать майнкрафт.</h1>
+        <p class="lead">Краткая и очень серезная инструкция. Если сделать всё как написано ниже, то должно заработать. Если не заработало — значит где-то майнкрафт решил что он умнее.</p>
+
+        <div class="cta">
+          <a class="btn primary" href="https://workupload.com/file/Z8SYhHZUswS">📦 СКАЧАТЬ СБОРУ</a>
+          <a class="btn secondary" href="./index.html">🏔️ НА ГЛАВНУЮ</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap steps">
+        <article class="step">
+          <div class="num">1</div>
+          <div>
+            <h2>Скачайте архив</h2>
+            <p>Сначало скачай архив со сборой. Не открывай его взглядом, просто скачай и запомни куда он делся.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <div class="num">2</div>
+          <div>
+            <h2>Поставь Minecraft 1.21.1 NeoForge</h2>
+            <p>Загрузи версию майнкрафт <strong>1.21.1 NeoForge</strong>. Не Fabric, не Forge из 2017 года и не «а у меня 1.20.4 почти тоже самое». Нужин именно 1.21.1 NeoForge.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <div class="num">3</div>
+          <div>
+            <h2>Перемисти все файлы в папку игры</h2>
+            <p>Открой архив и перемести <strong>все файлы из архива</strong> в папку игры. Все значит все. Не только те которые красивы выглядят.</p>
+            <div class="warning">⚠️ Если спросит заменить файлы — смотри внимателно куда кидаеш. Главное чтоб это была папка игры, а не рабочий стол мамы.</div>
+          </div>
+        </article>
+
+        <article class="step">
+          <div class="num">4</div>
+          <div>
+            <h2>Запускай и заходи</h2>
+            <p>Запускай Minecraft 1.21.1 NeoForge, жди пока оно думает о жизни, потом заходи на серевр. Если всё сделал правелно — поздравляю, ты смог устанавить сбору.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© 2026 Altay 2.0. Инструкция серезная, ошибки тоже серезные.</div></footer>
+</body>
+</html>
