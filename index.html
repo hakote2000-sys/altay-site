@@ -3,154 +3,210 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0f172a" />
-  <title>Altay 2.1 — Minecraft сервер</title>
-  <meta name="description" content="Altay 2.1 — теперь FPS в 2 раза меньше. Выживание, кланы, боссы, рыбала и легендарная оптимизацыя." />
+  <meta name="theme-color" content="#ff4f9a" />
+  <title>ALTAY 2.1.GTAVI — Minecraft сервер</title>
+  <meta name="description" content="ALTAY 2.1.GTAVI — неоновый серевр где фпс уходит в закат, рыбала живёт, а стабильнасть была удалена ради атмосферы." />
   <style>
-    :root{--bg:#07110a;--panel:#0d1c12;--panel2:#112719;--text:#eef7ef;--muted:#a9b8ad;--accent:#55e86c;--accent2:#a4ff7a;--line:#1d3a26;--shadow:0 20px 70px rgba(0,0,0,.35)}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:radial-gradient(circle at 20% 0%,#183524 0,transparent 35%),linear-gradient(180deg,#08120b,#050906 70%);color:var(--text)}
-    a{color:inherit;text-decoration:none} button{font:inherit}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(5,9,6,.72);border-bottom:1px solid rgba(255,255,255,.06)}
-    .navin{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:900;letter-spacing:.08em}.brand b{color:var(--accent)}.links{display:flex;gap:22px;color:var(--muted);font-size:14px}.links a:hover{color:#fff}
-    .hero{padding:92px 0 70px;min-height:76vh;display:grid;align-items:center}.heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--accent2);background:rgba(85,232,108,.07);font-size:13px;font-weight:700}.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)}
-    h1{font-size:clamp(42px,7vw,84px);line-height:.95;margin:20px 0 18px;letter-spacing:-.055em}.lead{font-size:18px;line-height:1.7;color:var(--muted);max-width:760px}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{border:0;border-radius:14px;padding:14px 18px;font-weight:800;cursor:pointer}.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07110a;box-shadow:0 12px 40px rgba(85,232,108,.22)}.secondary{background:#101913;color:#fff;border:1px solid var(--line)}
-    .serverCard{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(18,44,27,.95),rgba(9,20,12,.95));border:1px solid #285536;border-radius:28px;padding:28px;box-shadow:var(--shadow)}.serverCard:before{content:"";position:absolute;inset:-30% auto auto -15%;width:260px;height:260px;border-radius:50%;background:rgba(85,232,108,.13);filter:blur(8px)}.cube{width:160px;aspect-ratio:1;margin:8px auto 30px;border-radius:24px;background:linear-gradient(135deg,#63c551 0 26%,#5d9c46 26% 52%,#75533b 52%);box-shadow:inset -18px -18px 0 rgba(0,0,0,.12),0 28px 80px rgba(0,0,0,.35);transform:rotate(-6deg)}
-    .statrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat{padding:15px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}.stat small{color:var(--muted);display:block;margin-bottom:5px}.stat strong{font-size:19px}.ipbox{margin-top:12px;padding:15px;border-radius:16px;background:#07110a;border:1px dashed #356c44;display:flex;justify-content:space-between;gap:12px;align-items:center}.ip{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:800}.copy{padding:8px 10px;border-radius:10px;border:0;background:#17321f;color:#dfffe5;cursor:pointer}
-    section{padding:72px 0}.sectionTitle{font-size:38px;margin:0 0 12px}.sectionLead{color:var(--muted);margin:0 0 30px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:24px;border-radius:22px;background:rgba(14,29,18,.88);border:1px solid var(--line)}.icon{font-size:28px}.card h3{margin:14px 0 8px}.card p{margin:0;color:var(--muted);line-height:1.6}
-    .announce{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{padding:26px;border-radius:24px;background:rgba(14,29,18,.88);border:1px solid var(--line)}.panel h3{margin:0 0 18px;font-size:24px}.list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.list li{color:#dce8de;line-height:1.55;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);padding:12px 14px;border-radius:14px}.muted{color:var(--muted)}
-    .join{display:grid;grid-template-columns:1fr;gap:20px;padding:30px;border-radius:26px;background:linear-gradient(135deg,#102619,#0b160e);border:1px solid #285536}.steps{display:grid;gap:12px}.step{display:flex;gap:14px;align-items:flex-start;padding:14px;background:rgba(255,255,255,.035);border-radius:14px}.num{width:28px;height:28px;border-radius:9px;background:var(--accent);color:#061008;font-weight:900;display:grid;place-items:center;flex:0 0 auto}
-    .investor{display:grid;grid-template-columns:1fr 1fr;gap:18px}.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(85,232,108,.08);border:1px solid var(--line);color:var(--accent2);font-size:13px;font-weight:700;margin-bottom:12px}
-
-    .timerWrap{padding:26px 0 0}.timerBox{background:linear-gradient(180deg,rgba(18,44,27,.95),rgba(9,20,12,.95));border:1px solid #285536;border-radius:28px;padding:24px;box-shadow:var(--shadow)}.timerTop{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}.timerTitle{font-size:clamp(28px,4vw,44px);margin:12px 0 0;line-height:1.05}.timerLead{margin:0;color:var(--muted);line-height:1.6;max-width:420px}.timerGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}.timerCard{padding:18px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);text-align:center}.timerNum{font-size:clamp(34px,5vw,58px);font-weight:900;line-height:1}.timerLbl{margin-top:8px;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.08em}.timerNote{margin-top:16px;color:#dce8de;font-size:14px}.timerEnd{margin-top:14px;padding:14px 16px;border-radius:16px;background:rgba(85,232,108,.09);border:1px dashed #356c44;font-weight:800}
-    footer{padding:34px 0 50px;color:#7f9184;font-size:14px;border-top:1px solid rgba(255,255,255,.06)}
-    @media(max-width:920px){.links{display:none}.hero{padding-top:56px}.heroGrid,.join,.announce,.investor,.timerGrid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.serverCard{margin-top:8px}.sectionTitle{font-size:32px}}
+    :root{
+      --bg:#09070d;
+      --panel:#151020;
+      --panel2:#21142e;
+      --text:#fff7fb;
+      --muted:#c5afc7;
+      --pink:#ff4f9a;
+      --orange:#ff9a45;
+      --yellow:#ffd45a;
+      --cyan:#4ee6d5;
+      --line:rgba(255,255,255,.12);
+      --shadow:0 30px 90px rgba(0,0,0,.5);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 12%,rgba(255,79,154,.28),transparent 24%),
+        radial-gradient(circle at 88% 8%,rgba(255,154,69,.24),transparent 26%),
+        radial-gradient(circle at 70% 72%,rgba(78,230,213,.12),transparent 20%),
+        linear-gradient(180deg,#100814 0%,#09070d 46%,#060507 100%);
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.18;
+      background:linear-gradient(115deg,transparent 0 44%,rgba(255,255,255,.08) 45%,transparent 46% 100%);
+      background-size:90px 90px;
+    }
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .wrap{width:min(1180px,calc(100% - 34px));margin:auto}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(8,6,11,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .navin{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{font-weight:1000;letter-spacing:-.04em;font-size:22px;text-transform:uppercase;transform:skew(-5deg)}
+    .brand b{color:var(--pink);text-shadow:0 0 24px rgba(255,79,154,.5)}
+    .links{display:flex;gap:22px;color:var(--muted);font-size:14px;font-weight:700}
+    .links a:hover{color:#fff}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:14px 18px;font-weight:900;cursor:pointer;transition:.2s transform,.2s filter,.2s box-shadow}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+    .primary{color:#140810;background:linear-gradient(135deg,var(--pink),var(--orange) 55%,var(--yellow));box-shadow:0 14px 45px rgba(255,79,154,.25)}
+    .secondary{background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff}
+    .hero{min-height:86vh;display:grid;align-items:center;padding:82px 0 74px;position:relative}
+    .hero:after{content:"VICE";position:absolute;right:-18px;bottom:-26px;font-size:clamp(90px,18vw,250px);font-weight:1000;letter-spacing:-.08em;color:rgba(255,255,255,.025);pointer-events:none}
+    .heroGrid{display:grid;grid-template-columns:1.14fr .86fr;gap:42px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 13px;border-radius:999px;background:rgba(255,79,154,.1);border:1px solid rgba(255,79,154,.38);color:#ffd7e9;font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+    .dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 22px var(--cyan)}
+    h1{font-size:clamp(52px,8.4vw,104px);line-height:.86;margin:22px 0 20px;letter-spacing:-.07em;text-transform:uppercase;font-style:italic}
+    h1 .hot{display:block;color:transparent;background:linear-gradient(120deg,#fff 0 25%,#ff8dbd 45%,#ff9a45 72%,#ffd45a);-webkit-background-clip:text;background-clip:text;text-shadow:0 0 60px rgba(255,79,154,.08)}
+    .lead{font-size:18px;line-height:1.72;color:var(--muted);max-width:760px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .serverCard{position:relative;overflow:hidden;padding:28px;border-radius:30px;background:linear-gradient(160deg,rgba(35,20,48,.96),rgba(16,12,23,.96));border:1px solid rgba(255,255,255,.13);box-shadow:var(--shadow)}
+    .serverCard:before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;top:-105px;right:-60px;background:radial-gradient(circle,var(--pink),transparent 66%);opacity:.22;filter:blur(10px)}
+    .sky{height:190px;border-radius:22px;position:relative;overflow:hidden;background:linear-gradient(180deg,#4d275f 0,#ff5b8f 38%,#ff9e4e 70%,#23152a 71%)}
+    .sun{position:absolute;width:92px;height:92px;border-radius:50%;left:50%;top:28px;transform:translateX(-50%);background:var(--yellow);box-shadow:0 0 45px rgba(255,212,90,.55)}
+    .sky:after{content:"";position:absolute;inset:auto 0 0;height:70px;background:linear-gradient(165deg,transparent 0 30%,#0b0910 31% 48%,transparent 49%),linear-gradient(195deg,transparent 0 38%,#0b0910 39% 55%,transparent 56%),linear-gradient(180deg,transparent,#09070d)}
+    .palm{position:absolute;font-size:72px;bottom:5px;left:18px;filter:brightness(.15)}
+    .statrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+    .stat{padding:15px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid var(--line)}
+    .stat small{display:block;color:var(--muted);margin-bottom:4px}.stat strong{font-size:19px}
+    .ipbox{margin-top:12px;padding:15px;border-radius:16px;background:#0b0810;border:1px dashed rgba(255,79,154,.5);display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .ip{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:900;font-size:14px;word-break:break-all}
+    .copy{padding:9px 11px;border:0;border-radius:10px;background:linear-gradient(135deg,var(--pink),var(--orange));color:#170912;font-weight:900;cursor:pointer}
+    section{padding:78px 0}
+    .sectionTitle{font-size:clamp(34px,5vw,58px);line-height:1;margin:0 0 12px;letter-spacing:-.05em;text-transform:uppercase;font-style:italic}
+    .sectionLead{margin:0 0 30px;color:var(--muted);line-height:1.65}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card,.panel,.join{background:linear-gradient(155deg,rgba(36,22,46,.9),rgba(14,10,19,.94));border:1px solid var(--line);box-shadow:0 18px 60px rgba(0,0,0,.24)}
+    .card{padding:24px;border-radius:24px;position:relative;overflow:hidden}
+    .card:before{content:"";position:absolute;height:4px;inset:0 0 auto;background:linear-gradient(90deg,var(--pink),var(--orange),var(--yellow))}
+    .icon{font-size:30px}.card h3{margin:15px 0 8px;font-size:22px}.card p{margin:0;color:var(--muted);line-height:1.62}
+    .announce{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .panel{padding:27px;border-radius:26px}.panel h3{margin:0 0 17px;font-size:25px}
+    .list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+    .list li{padding:13px 14px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);color:#f5eafa;line-height:1.5}
+    .join{padding:30px;border-radius:28px;display:grid;gap:20px}
+    .steps{display:grid;gap:12px}.step{display:flex;gap:14px;padding:14px;border-radius:14px;background:rgba(255,255,255,.035)}
+    .num{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:0 0 auto;background:linear-gradient(135deg,var(--pink),var(--orange));color:#160a10;font-weight:1000}
+    .badge{display:inline-flex;padding:7px 11px;border-radius:999px;background:rgba(78,230,213,.08);border:1px solid rgba(78,230,213,.35);color:#bffbf3;font-size:13px;font-weight:900;margin-bottom:12px}
+    .strip{padding:22px 0;background:linear-gradient(90deg,var(--pink),var(--orange),var(--yellow));color:#170a10;overflow:hidden;border-block:1px solid rgba(255,255,255,.25)}
+    .stripInner{white-space:nowrap;font-weight:1000;font-size:clamp(22px,3vw,36px);letter-spacing:-.03em;text-transform:uppercase;transform:rotate(-1deg)}
+    footer{padding:34px 0 48px;color:#a990ad;border-top:1px solid var(--line);font-size:14px}
+    .muted{color:var(--muted)}
+    @media(max-width:920px){.links{display:none}.heroGrid,.cards,.announce{grid-template-columns:1fr}.hero{padding-top:52px}.serverCard{margin-top:6px}.navin>.btn{display:none}.sectionTitle{font-size:38px}}
+    @media(max-width:600px){h1{font-size:54px}.statrow{grid-template-columns:1fr}.ipbox{align-items:flex-start;flex-direction:column}.copy{width:100%}.cta .btn{width:100%}}
   </style>
 </head>
 <body>
-  <nav class="nav"><div class="wrap navin"><div class="brand">Altay <b>2.1</b></div><div class="links"><a href="#about">О сервере</a><a href="#launch">Открытие</a><a href="#join">Как зайти</a></div><a class="btn secondary" href="#join">Играть</a></div></nav>
+  <nav class="nav">
+    <div class="wrap navin">
+      <div class="brand">ALTAY <b>2.1.GTAVI</b></div>
+      <div class="links"><a href="#about">Чо тут есть</a><a href="#launch">Новасти</a><a href="#join">Как зайти</a></div>
+      <a class="btn secondary" href="#join">ЗАЙТИ ЩАС</a>
+    </div>
+  </nav>
 
   <main>
-    <section class="timerWrap"><div class="wrap"><div class="timerBox">
-      <div class="timerTop">
+    <section class="hero">
+      <div class="wrap heroGrid">
         <div>
-          <div class="eyebrow">🚀 ALTAY 2.1 ВЫШЕЛ. НАЗАД ДОРОГИ НЕТ</div>
-          <h2 class="timerTitle">ТЕПЕРЬ ФПС В 2 РАЗА МЕНЬШЕ.</h2>
+          <div class="eyebrow"><span class="dot"></span> ЮЖНЫЙ ВАЙБ. СЕВЕРНЫЙ ПИНГ. АЛТАЙ.</div>
+          <h1>ALTAY <span class="hot">2.1.GTAVI</span></h1>
+          <p class="lead">Новая эра серевра официально начилася. Никаких таймиров, никакого ожидания, никакой ответсвености. Тут майнкрафт 1.21.1, рыбалла, босы, кланы, транспорт настроения и оптимизацыя которая иногда оптимизирует вас из игры.</p>
+          <div class="cta">
+            <a class="btn primary" href="https://workupload.com/file/Z8SYhHZUswS" download>📦 СКАЧАТЬ СБОРУ</a>
+            <a class="btn secondary" href="./instructions.html">📖 КАК ЭТО УСТАНАВИТЬ</a>
+            <button class="btn secondary" onclick="copyIp()">📋 КАПИРОВАТЬ IP</button>
+          </div>
         </div>
-        <p class="timerLead">Мы долго оптимизировали серевр и добились невозможного: теперь видеокарта отдыхает потому что кадры просто не появляются.</p>
-      </div>
-      <div class="timerGrid">
-        <div class="timerCard"><div class="timerNum">2.1</div><div class="timerLbl">версия алтая</div></div>
-        <div class="timerCard"><div class="timerNum">×½</div><div class="timerLbl">ваш фпс</div></div>
-        <div class="timerCard"><div class="timerNum">100%</div><div class="timerLbl">рыбала</div></div>
-        <div class="timerCard"><div class="timerNum">1</div><div class="timerLbl">леха</div></div>
-      </div>
-      <div class="timerNote">📢 патчноут: добавили нововведения, убрали стабильность, ничего не поняли но работает.</div>
-      <div class="timerEnd">🔥 ALTAY 2.1 УЖЕ МОЖНО ЗАПУСКАТЬ. ЕСЛИ ЗАПУСТИЛОСЬ — НЕ ТРОГАЙ.</div>
-    </div></div></section>
 
-    <section class="hero"><div class="wrap heroGrid">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> 🔥 АЛТАЙ 2.1 УЖЕ ТУТ. ОПТИМИЗАЦЫЯ ПРОШЛА УСПЕШНО 🔥</div>
-        <h1>ALTAY 2.1<br>ТЕПЕРЬ ФПС В 2 РАЗА МЕНЬШЕ.</h1>
-        <p class="lead">Мы выпустили Altay 2.1 и провели мощнейшую оптимизацыю. Теперь ФПС в 2 раза меньше, зато контента больше. Если раньше было 120 кадров — теперь можеш наслаждатся кинематографичными 60. Рыбала работает, леха жив, значит обновление успешное.</p>
-        <div class="cta"><a class="btn primary" href="https://workupload.com/file/Z8SYhHZUswS" download>📦 СКАЧАТЬ СБОРУ</a><a class="btn secondary" href="./instructions.html">📖 КАК УСТАНОВИТЬ ЭТО</a><button class="btn secondary" onclick="copyIp()">Скопировать IP</button></div>
+        <aside class="serverCard">
+          <div class="sky"><div class="sun"></div><div class="palm">🌴</div></div>
+          <div class="statrow">
+            <div class="stat"><small>Версия майнкрафта</small><strong>1.21.1 NeoForge</strong></div>
+            <div class="stat"><small>Режым</small><strong>Survival + RPG + хаос</strong></div>
+          </div>
+          <div class="ipbox">
+            <div><small class="muted">IP серевра</small><div class="ip" id="server-ip">altay2gultragps.joinmc.cloud</div></div>
+            <button class="copy" onclick="copyIp()">КОПИР</button>
+          </div>
+        </aside>
       </div>
-      <aside class="serverCard">
-        <div class="cube" aria-hidden="true"></div>
-        <div class="statrow"><div class="stat"><small>Версия</small><strong>1.21.1</strong></div><div class="stat"><small>Режим</small><strong>Survival + RPG</strong></div></div>
-        <div class="ipbox"><div><small style="color:var(--muted)">IP сервера</small><div class="ip" id="server-ip">altay2gultragps.joinmc.cloud</div></div><button class="copy" onclick="copyIp()">Копировать</button></div>
-      </aside>
-    </div></section>
+    </section>
 
-    <section id="about"><div class="wrap"><h2 class="sectionTitle">⚡ Что вас жёт в 2.1:</h2><p class="sectionLead">⚡ вас жёт: меньше фпс, больше приколов. Короче ниже написано.</p><div class="cards">
-      <article class="card"><div class="icon">📉</div><h3>оптимизацыя наоборот</h3><p>ФПС стал меньше зато ощущения дороже. улучшеная экономика, новые сособы заработка, проффеси, здадaни и награды. Всё чтоб компьютер понимал кто тут главный.</p></article>
-      <article class="card"><div class="icon">⚔️</div><h3>обновлённые ланы и ПР</h3><p>обновлённые ланы, войны и рейтигни; салансированное ПР, дуэли и турниры; обижат и унижат будут абсолютно всех.</p></article>
-      <article class="card"><div class="icon">🐟</div><h3>рыбала, боссы и данжи</h3><p>кастомное оружи, брон и зачаровани; уникальнные мобы, боссы и новые дажи; рыбала, фермерство и обновлённые шахы. Данжи где сундук пустой, а мобов почему-то сорок.</p></article>
-    </div></div></section>
+    <div class="strip"><div class="stripInner">ALTAY 2.1.GTAVI • РЫБАЛА ЕСТЬ • ФПС МОЖЕТ БЫТЬ • ЛЕХА ПОД ВОПРОСАМ • СТАБИЛНАСТЬ НЕ ГАРАНТИРУЕТСЯ • ALTAY 2.1.GTAVI •</div></div>
 
-    <section id="launch"><div class="wrap"><h2 class="sectionTitle">🎁 В ден открытия:</h2><p class="sectionLead">короче в день открытия будет много всего, если сервер не упадёт.</p><div class="announce">
-      <div class="panel">
-        <h3>⚡ что уже есть:</h3>
-        <ul class="list">
-          <li>💠 готовая сбора и улучшеная экономика;</li>
-          <li>💠 проффеси, здадaни, достижени и награды;</li>
-          <li>💠 обновлённые ланы, войны и рейтигни;</li>
-          <li>💠 салансированное ПР, дуэли и турниры;</li>
-          <li>💠 кастомное оружи, брон и зачаровани;</li>
-          <li>💠 уникальнные мобы, боссы и новые дажи;</li>
-          <li>💠 рыбала, фермерство и обновлённые шахы;</li>
-          <li>💠 новый спав, защита новичков и пиваты;</li>
-          <li>💠 стабильная работа и защита от читеров. ну надеемся.</li>
-        </ul>
+    <section id="about">
+      <div class="wrap">
+        <h2 class="sectionTitle">ЧО ВООБЩЕ ПРОИЗОШЛО</h2>
+        <p class="sectionLead">Мы взяли обычный серевр, добавили туда всего черезчур много, потом посмотрели на логи и сказали: «идеално».</p>
+        <div class="cards">
+          <article class="card"><div class="icon">🌇</div><h3>атмосфера 300%</h3><p>Неон, закаты, приключения и ощущение что щас начнётся миссия. На деле начнётся загрузка чанков но тоже красиво.</p></article>
+          <article class="card"><div class="icon">⚔️</div><h3>босы, данжы и драки</h3><p>Уникалные мобы, босы, оружи, бронь, кланы, дуэли и прочие способы потерять вещи за 4 секунды после выхода с базы.</p></article>
+          <article class="card"><div class="icon">🐟</div><h3>рыбала снова канон</h3><p>Фермерство, шахты, рыба, задания, проффесии и экономика. Можно стать богатым. Теоритически. Наверно.</p></article>
+        </div>
       </div>
-      <div class="panel">
-        <h3>🎁 В ден открытия:</h3>
-        <ul class="list">
-          <li>💰 стартовые бонусы и наборы;</li>
-          <li>🎟️ секретные промокоды;</li>
-          <li>🎉 розыгрыши привилегий и валюты;</li>
-          <li>⚔️ ПР-турниры и охота на администрацию;</li>
-          <li>😈 первый мировой босс;</li>
-          <li>🏆 клановые соревнавания;</li>
-          <li>🧭 поиск сокровищ; 🏃 паркур, конкурсы и мини-игры;</li>
-          <li>🎆 обратный отсчёт и фейерверк!</li>
-          <li><strong>📅 КРЫТИЕ: ЗАВТРА  🏔️ ALTAY ВОЗВРАЩАТСЯ! 🔥 МАСШТАБНЕЕ. ИНТЕРЕСНЕ. СИЛНЕ.</strong></li>
-        </ul>
-      </div>
-    </div></div></section>
+    </section>
 
-    <section id="join"><div class="wrap join"><div><h2 class="sectionTitle">Как подключиться</h2><p class="sectionLead">Три шага — и ты уже выбираешь: фармить, воевать или срочно стать легендой местной рыбалки.</p><div class="steps">
-      <div class="step"><span class="num">1</span><div><strong>Запусти Minecraft Java</strong><div style="color:var(--muted);margin-top:4px">Используй совместимую версию 1.21.1.</div></div></div>
-      <div class="step"><span class="num">2</span><div><strong>Открой «Сетевая игра»</strong><div style="color:var(--muted);margin-top:4px">Нажми «Добавить сервер» и не пугайся ответственности.</div></div></div>
-      <div class="step"><span class="num">3</span><div><strong>Вставь IP и заходи</strong><div style="color:var(--muted);margin-top:4px">altayGultra — и вот ты уже в мире, где любой план может закончиться данжем.</div></div></div>
-    </div></div></div></section>
+    <section id="launch">
+      <div class="wrap">
+        <h2 class="sectionTitle">ПАТЧНОУТ ИЗ ПАРАЛЕЛЬНОЙ РЕАЛНАСТИ</h2>
+        <p class="sectionLead">Что уже завезли и что может внезапно завестись после перезапуска.</p>
+        <div class="announce">
+          <div class="panel">
+            <h3>🔥 Уже на месте</h3>
+            <ul class="list">
+              <li>💠 Minecraft 1.21.1 NeoForge и огромная сбора;</li>
+              <li>💠 кланы, босы, данжы, экономика и рыбала;</li>
+              <li>💠 новые биомы, измерения, оружия и подозрителные механики;</li>
+              <li>💠 оптимизацыя по методу «если запустилось значет готово».</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>🚨 Важное предупреждени</h3>
+            <ul class="list">
+              <li>⚠️ первый запуск может думать дольше чем ты;</li>
+              <li>⚠️ если всё работает — не обновляй ничо просто так;</li>
+              <li>⚠️ клиент и серевр должны иметь одинаковые контентные моды;</li>
+              <li>⚠️ увидел 3 фпс — значит синематик режим активирован.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section><div class="wrap"><h2 class="sectionTitle">💰 АЛТАЙ ИЩЕТ ИНВЕСТОРА 💰</h2><p class="sectionLead">сервер почти готов, рыбала есть, админы есть, даже леха вроде есть но русских почемуто нет. нужен серезный человек который развитие полюбит хотсенг.</p><div class="investor">
-      <div class="panel">
-        <span class="badge">📈 что уже есть:</span>
-        <h3>что уже есть:</h3>
-        <ul class="list">
-          <li>💠 готовая сбора; 💠 экономика и кланы; 💠 ПП дажи боссы; 💠 рыбала;</li>
-          <li>💠 леха; 💠 желание стать богатыми;</li>
-          <li>💠 и вообще сервер почти готов если не считать все остальное.</li>
-        </ul>
+    <section id="join">
+      <div class="wrap">
+        <div class="join">
+          <div>
+            <span class="badge">КАК ВОЙТИ И НЕ ПОТЕРЯТСЯ</span>
+            <h2 class="sectionTitle">ЗАХОД ЗА 4 ШАГА</h2>
+            <p class="sectionLead">Если после этого не заходит, значит у майнкрафта есть своё мнение.</p>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="num">1</div><div><strong>Скачай сбору.</strong><div class="muted">Кнопка сверху большая специально чтоб её увидили.</div></div></div>
+            <div class="step"><div class="num">2</div><div><strong>Устанави Minecraft 1.21.1 NeoForge.</strong><div class="muted">Не 1.21.11, не Fabric, не «почти такаяже».</div></div></div>
+            <div class="step"><div class="num">3</div><div><strong>Сделай всё по инструкции.</strong><div class="muted"><a href="./instructions.html" style="color:#ff9ec6;font-weight:900">Тут есть отдельная страница для этого ужаса →</a></div></div></div>
+            <div class="step"><div class="num">4</div><div><strong>Подключайся.</strong><div class="muted">IP: altay2gultragps.joinmc.cloud</div></div></div>
+          </div>
+          <div class="cta"><button class="btn primary" onclick="copyIp()">📋 СКОПИРОВАТЬ IP И УЙТИ В ЗАКАТ</button></div>
+        </div>
       </div>
-      <div class="panel">
-        <span class="badge">💸 на что нужны деньги сам сервер:</span>
-        <h3>🤝 что получит инвестор:</h3>
-        <ul class="list">
-          <li>💠 реклама; 💠 хостинг; 💠 плагины; 💠 конкурсы; 💠 чтоб леха перестал грустить;</li>
-          <li>💠 роцен; 💠 участи в развитии;</li>
-          <li>💠 статус гавного человека; 💠 уважение рыбалы👍;</li>
-          <li>💠 возможно фотку лехи без вопроса на лице.</li>
-        </ul>
-      </div>
-    </div></div></section>
+    </section>
   </main>
 
-  <footer><div class="wrap">© 2026 Altay 2.1. Теперь ФПС в 2 раза меньше. Не является официальным продуктом Mojang или Microsoft.</div></footer>
+  <footer>
+    <div class="wrap">© 2026 ALTAY 2.1.GTAVI. Не рокстар, но бюджет тоже куда-то пропал.</div>
+  </footer>
+
   <script>
-    const targetDate = new Date("2026-08-30T20:00:00+03:00");
-    function pad(n){return String(n).padStart(2,'0');}
-    function updateTimer(){
-      let diff = targetDate - new Date();
-      const status = document.getElementById('timer-status');
-      if(diff <= 0){
-        ['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='00');
-        status.textContent='🔥 УЖЕ КРЫЛОСЬ. БЕГИ НА СЕРЕВР ПРЯМО СЕЧАС.';
-        return;
-      }
-      const days=Math.floor(diff/86400000); diff%=86400000;
-      const hours=Math.floor(diff/3600000); diff%=3600000;
-      const minutes=Math.floor(diff/60000); diff%=60000;
-      const seconds=Math.floor(diff/1000);
-      document.getElementById('days').textContent=pad(days);
-      document.getElementById('hours').textContent=pad(hours);
-      document.getElementById('minutes').textContent=pad(minutes);
-      document.getElementById('seconds').textContent=pad(seconds);
-      status.textContent='До крытия ещё чучуть: '+days+' дн. '+hours+' ч. '+minutes+' мин. '+seconds+' сек.';
+    function copyIp(){
+      const ip=document.getElementById('server-ip')?.textContent?.trim()||'altay2gultragps.joinmc.cloud';
+      navigator.clipboard.writeText(ip).then(()=>{
+        const old=document.title;
+        document.title='IP СКАПИРОВАН, ГЕНИЙ';
+        setTimeout(()=>document.title=old,1400);
+      }).catch(()=>prompt('Скапируй руками потому что браузир решил поумничать:',ip));
     }
-    updateTimer(); setInterval(updateTimer,1000);
-    function copyIp(){const ip=document.getElementById('server-ip').textContent.trim();navigator.clipboard.writeText(ip).then(()=>{const old=document.title;document.title='IP скопирован!';setTimeout(()=>document.title=old,1300)}).catch(()=>prompt('Скопируй IP:',ip));}
   </script>
 </body>
 </html>
