@@ -1,106 +1,51 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#ff4f9a" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ff4f9a">
   <title>ALTAY 2.1.GTAVI — Minecraft сервер</title>
-  <meta name="description" content="ALTAY 2.1.GTAVI — неоновый серевр где фпс уходит в закат, рыбала живёт, а стабильнасть была удалена ради атмосферы." />
+  <meta name="description" content="ALTAY 2.1.GTAVI — неон, закаты, рыбалла, босы, кланы и легендарная оптимизацыя которая иногда оптимизирует игрока из игры.">
   <style>
     :root{
-      --bg:#09070d;
-      --panel:#151020;
-      --panel2:#21142e;
-      --text:#fff7fb;
-      --muted:#c5afc7;
-      --pink:#ff4f9a;
-      --orange:#ff9a45;
-      --yellow:#ffd45a;
-      --cyan:#4ee6d5;
-      --line:rgba(255,255,255,.12);
-      --shadow:0 30px 90px rgba(0,0,0,.5);
+      --bg:#07050a;--panel:#15101d;--panel2:#21142d;--text:#fff8fb;--muted:#c9b4c9;
+      --pink:#ff4f9a;--orange:#ff9548;--yellow:#ffd75a;--cyan:#51ead8;--violet:#8d5cff;
+      --line:rgba(255,255,255,.12);--shadow:0 28px 90px rgba(0,0,0,.5)
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at 15% 12%,rgba(255,79,154,.28),transparent 24%),
-        radial-gradient(circle at 88% 8%,rgba(255,154,69,.24),transparent 26%),
-        radial-gradient(circle at 70% 72%,rgba(78,230,213,.12),transparent 20%),
-        linear-gradient(180deg,#100814 0%,#09070d 46%,#060507 100%);
-      overflow-x:hidden;
-    }
-    body:before{
-      content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.18;
-      background:linear-gradient(115deg,transparent 0 44%,rgba(255,255,255,.08) 45%,transparent 46% 100%);
-      background-size:90px 90px;
-    }
-    a{color:inherit;text-decoration:none}
-    button{font:inherit}
-    .wrap{width:min(1180px,calc(100% - 34px));margin:auto}
-    .nav{position:sticky;top:0;z-index:50;background:rgba(8,6,11,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-    .navin{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{font-weight:1000;letter-spacing:-.04em;font-size:22px;text-transform:uppercase;transform:skew(-5deg)}
-    .brand b{color:var(--pink);text-shadow:0 0 24px rgba(255,79,154,.5)}
-    .links{display:flex;gap:22px;color:var(--muted);font-size:14px;font-weight:700}
-    .links a:hover{color:#fff}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:14px 18px;font-weight:900;cursor:pointer;transition:.2s transform,.2s filter,.2s box-shadow}
-    .btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
-    .primary{color:#140810;background:linear-gradient(135deg,var(--pink),var(--orange) 55%,var(--yellow));box-shadow:0 14px 45px rgba(255,79,154,.25)}
-    .secondary{background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff}
-    .hero{min-height:86vh;display:grid;align-items:center;padding:82px 0 74px;position:relative}
-    .hero:after{content:"VICE";position:absolute;right:-18px;bottom:-26px;font-size:clamp(90px,18vw,250px);font-weight:1000;letter-spacing:-.08em;color:rgba(255,255,255,.025);pointer-events:none}
-    .heroGrid{display:grid;grid-template-columns:1.14fr .86fr;gap:42px;align-items:center}
-    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 13px;border-radius:999px;background:rgba(255,79,154,.1);border:1px solid rgba(255,79,154,.38);color:#ffd7e9;font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
-    .dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 22px var(--cyan)}
-    h1{font-size:clamp(52px,8.4vw,104px);line-height:.86;margin:22px 0 20px;letter-spacing:-.07em;text-transform:uppercase;font-style:italic}
-    h1 .hot{display:block;color:transparent;background:linear-gradient(120deg,#fff 0 25%,#ff8dbd 45%,#ff9a45 72%,#ffd45a);-webkit-background-clip:text;background-clip:text;text-shadow:0 0 60px rgba(255,79,154,.08)}
-    .lead{font-size:18px;line-height:1.72;color:var(--muted);max-width:760px}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-    .serverCard{position:relative;overflow:hidden;padding:28px;border-radius:30px;background:linear-gradient(160deg,rgba(35,20,48,.96),rgba(16,12,23,.96));border:1px solid rgba(255,255,255,.13);box-shadow:var(--shadow)}
-    .serverCard:before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;top:-105px;right:-60px;background:radial-gradient(circle,var(--pink),transparent 66%);opacity:.22;filter:blur(10px)}
-    .sky{height:190px;border-radius:22px;position:relative;overflow:hidden;background:linear-gradient(180deg,#4d275f 0,#ff5b8f 38%,#ff9e4e 70%,#23152a 71%)}
-    .sun{position:absolute;width:92px;height:92px;border-radius:50%;left:50%;top:28px;transform:translateX(-50%);background:var(--yellow);box-shadow:0 0 45px rgba(255,212,90,.55)}
-    .sky:after{content:"";position:absolute;inset:auto 0 0;height:70px;background:linear-gradient(165deg,transparent 0 30%,#0b0910 31% 48%,transparent 49%),linear-gradient(195deg,transparent 0 38%,#0b0910 39% 55%,transparent 56%),linear-gradient(180deg,transparent,#09070d)}
-    .palm{position:absolute;font-size:72px;bottom:5px;left:18px;filter:brightness(.15)}
-    .statrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
-    .stat{padding:15px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid var(--line)}
-    .stat small{display:block;color:var(--muted);margin-bottom:4px}.stat strong{font-size:19px}
-    .ipbox{margin-top:12px;padding:15px;border-radius:16px;background:#0b0810;border:1px dashed rgba(255,79,154,.5);display:flex;align-items:center;justify-content:space-between;gap:14px}
-    .ip{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:900;font-size:14px;word-break:break-all}
-    .copy{padding:9px 11px;border:0;border-radius:10px;background:linear-gradient(135deg,var(--pink),var(--orange));color:#170912;font-weight:900;cursor:pointer}
-    section{padding:78px 0}
-    .sectionTitle{font-size:clamp(34px,5vw,58px);line-height:1;margin:0 0 12px;letter-spacing:-.05em;text-transform:uppercase;font-style:italic}
-    .sectionLead{margin:0 0 30px;color:var(--muted);line-height:1.65}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card,.panel,.join{background:linear-gradient(155deg,rgba(36,22,46,.9),rgba(14,10,19,.94));border:1px solid var(--line);box-shadow:0 18px 60px rgba(0,0,0,.24)}
-    .card{padding:24px;border-radius:24px;position:relative;overflow:hidden}
-    .card:before{content:"";position:absolute;height:4px;inset:0 0 auto;background:linear-gradient(90deg,var(--pink),var(--orange),var(--yellow))}
-    .icon{font-size:30px}.card h3{margin:15px 0 8px;font-size:22px}.card p{margin:0;color:var(--muted);line-height:1.62}
-    .announce{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .panel{padding:27px;border-radius:26px}.panel h3{margin:0 0 17px;font-size:25px}
-    .list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
-    .list li{padding:13px 14px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);color:#f5eafa;line-height:1.5}
-    .join{padding:30px;border-radius:28px;display:grid;gap:20px}
-    .steps{display:grid;gap:12px}.step{display:flex;gap:14px;padding:14px;border-radius:14px;background:rgba(255,255,255,.035)}
-    .num{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:0 0 auto;background:linear-gradient(135deg,var(--pink),var(--orange));color:#160a10;font-weight:1000}
-    .badge{display:inline-flex;padding:7px 11px;border-radius:999px;background:rgba(78,230,213,.08);border:1px solid rgba(78,230,213,.35);color:#bffbf3;font-size:13px;font-weight:900;margin-bottom:12px}
-    .strip{padding:22px 0;background:linear-gradient(90deg,var(--pink),var(--orange),var(--yellow));color:#170a10;overflow:hidden;border-block:1px solid rgba(255,255,255,.25)}
-    .stripInner{white-space:nowrap;font-weight:1000;font-size:clamp(22px,3vw,36px);letter-spacing:-.03em;text-transform:uppercase;transform:rotate(-1deg)}
-    footer{padding:34px 0 48px;color:#a990ad;border-top:1px solid var(--line);font-size:14px}
-    .muted{color:var(--muted)}
-    @media(max-width:920px){.links{display:none}.heroGrid,.cards,.announce{grid-template-columns:1fr}.hero{padding-top:52px}.serverCard{margin-top:6px}.navin>.btn{display:none}.sectionTitle{font-size:38px}}
-    @media(max-width:600px){h1{font-size:54px}.statrow{grid-template-columns:1fr}.ipbox{align-items:flex-start;flex-direction:column}.copy{width:100%}.cta .btn{width:100%}}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:
+      radial-gradient(circle at 12% 8%,rgba(255,79,154,.34),transparent 24%),
+      radial-gradient(circle at 90% 5%,rgba(255,149,72,.23),transparent 27%),
+      radial-gradient(circle at 72% 78%,rgba(81,234,216,.11),transparent 26%),
+      linear-gradient(180deg,#120817 0,#09060d 46%,#050406 100%);overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.16;background:linear-gradient(115deg,transparent 0 44%,rgba(255,255,255,.08) 45%,transparent 46% 100%);background-size:84px 84px}
+    a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(1180px,calc(100% - 34px));margin:auto}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(7,5,10,.76);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .navin{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:1000;letter-spacing:-.045em;font-size:23px;text-transform:uppercase;transform:skew(-5deg)}.brand b{color:var(--pink);text-shadow:0 0 26px rgba(255,79,154,.5)}
+    .links{display:flex;gap:22px;color:var(--muted);font-size:14px;font-weight:800}.links a:hover{color:#fff}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:13px;padding:14px 18px;font-weight:950;cursor:pointer;transition:.2s transform,.2s filter,.2s box-shadow}.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .primary{color:#180b12;background:linear-gradient(135deg,var(--pink),var(--orange) 56%,var(--yellow));box-shadow:0 16px 46px rgba(255,79,154,.25)}.secondary{background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff}
+    .hero{min-height:88vh;display:grid;align-items:center;padding:82px 0 78px;position:relative}.hero:after{content:"ALTAY";position:absolute;right:-22px;bottom:-28px;font-size:clamp(100px,19vw,270px);font-weight:1000;letter-spacing:-.09em;color:rgba(255,255,255,.025);pointer-events:none}
+    .heroGrid{display:grid;grid-template-columns:1.12fr .88fr;gap:42px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 13px;border-radius:999px;background:rgba(255,79,154,.1);border:1px solid rgba(255,79,154,.4);color:#ffd9e8;font-size:13px;font-weight:950;letter-spacing:.04em;text-transform:uppercase}.dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 22px var(--cyan)}
+    h1{font-size:clamp(54px,8.6vw,108px);line-height:.85;margin:22px 0 20px;letter-spacing:-.075em;text-transform:uppercase;font-style:italic}.hot{display:block;color:transparent;background:linear-gradient(120deg,#fff 0 22%,#ff86bb 45%,#ff984a 72%,#ffd75a);-webkit-background-clip:text;background-clip:text}
+    .lead{font-size:18px;line-height:1.72;color:var(--muted);max-width:760px}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .serverCard{position:relative;overflow:hidden;padding:28px;border-radius:30px;background:linear-gradient(160deg,rgba(38,22,50,.97),rgba(14,10,20,.97));border:1px solid rgba(255,255,255,.13);box-shadow:var(--shadow)}.serverCard:before{content:"";position:absolute;width:270px;height:270px;border-radius:50%;top:-110px;right:-70px;background:radial-gradient(circle,var(--pink),transparent 66%);opacity:.22;filter:blur(10px)}
+    .sky{height:205px;border-radius:22px;position:relative;overflow:hidden;background:linear-gradient(180deg,#4d2860 0,#ff5e91 38%,#ff9e4d 70%,#24142c 71%)}.sun{position:absolute;width:94px;height:94px;border-radius:50%;left:50%;top:30px;transform:translateX(-50%);background:var(--yellow);box-shadow:0 0 48px rgba(255,215,90,.55)}.sky:after{content:"";position:absolute;inset:auto 0 0;height:76px;background:linear-gradient(165deg,transparent 0 30%,#0a0810 31% 48%,transparent 49%),linear-gradient(195deg,transparent 0 38%,#0a0810 39% 55%,transparent 56%),linear-gradient(180deg,transparent,#08060b)}.palm{position:absolute;font-size:76px;bottom:5px;left:17px;filter:brightness(.15)}
+    .wanted{position:absolute;top:18px;right:18px;background:#0c0910;border:1px solid var(--line);padding:8px 10px;border-radius:10px;font-weight:1000;color:var(--yellow);letter-spacing:.08em}.wanted span{color:#fff}
+    .statrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.stat{padding:15px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid var(--line)}.stat small{display:block;color:var(--muted);margin-bottom:4px}.stat strong{font-size:19px}.ipbox{margin-top:12px;padding:15px;border-radius:16px;background:#0a0810;border:1px dashed rgba(255,79,154,.5);display:flex;align-items:center;justify-content:space-between;gap:14px}.ip{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:900;font-size:14px;word-break:break-all}.copy{padding:9px 11px;border:0;border-radius:10px;background:linear-gradient(135deg,var(--pink),var(--orange));color:#170912;font-weight:950;cursor:pointer}
+    .strip{padding:22px 0;background:linear-gradient(90deg,var(--pink),var(--orange),var(--yellow));color:#170a10;overflow:hidden;border-block:1px solid rgba(255,255,255,.25)}.stripInner{white-space:nowrap;font-weight:1000;font-size:clamp(22px,3vw,36px);letter-spacing:-.03em;text-transform:uppercase;transform:rotate(-1deg)}
+    section{padding:78px 0}.sectionTitle{font-size:clamp(34px,5vw,58px);line-height:1;margin:0 0 12px;letter-spacing:-.05em;text-transform:uppercase;font-style:italic}.sectionLead{margin:0 0 30px;color:var(--muted);line-height:1.65}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card,.panel,.join{background:linear-gradient(155deg,rgba(36,22,46,.92),rgba(14,10,19,.96));border:1px solid var(--line);box-shadow:0 18px 60px rgba(0,0,0,.24)}.card{padding:24px;border-radius:24px;position:relative;overflow:hidden}.card:before{content:"";position:absolute;height:4px;inset:0 0 auto;background:linear-gradient(90deg,var(--pink),var(--orange),var(--yellow))}.icon{font-size:30px}.card h3{margin:15px 0 8px;font-size:22px}.card p{margin:0;color:var(--muted);line-height:1.62}
+    .mission{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{padding:27px;border-radius:26px}.panel h3{margin:0 0 17px;font-size:25px}.list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.list li{padding:13px 14px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);color:#f5eafa;line-height:1.5}.money{font-family:ui-monospace,monospace;color:#9cffad;font-weight:1000}
+    .join{padding:30px;border-radius:28px;display:grid;gap:20px}.steps{display:grid;gap:12px}.step{display:flex;gap:14px;padding:14px;border-radius:14px;background:rgba(255,255,255,.035)}.num{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:0 0 auto;background:linear-gradient(135deg,var(--pink),var(--orange));color:#160a10;font-weight:1000}.badge{display:inline-flex;padding:7px 11px;border-radius:999px;background:rgba(81,234,216,.08);border:1px solid rgba(81,234,216,.35);color:#c0fff6;font-size:13px;font-weight:950;margin-bottom:12px}
+    .poster{margin-top:18px;padding:18px 20px;border-radius:18px;border:1px solid rgba(255,215,90,.34);background:linear-gradient(135deg,rgba(255,215,90,.08),rgba(255,79,154,.06));font-weight:850;line-height:1.6}.poster b{color:var(--yellow)}
+    footer{padding:34px 0 48px;color:#a990ad;border-top:1px solid var(--line);font-size:14px}.muted{color:var(--muted)}
+    @media(max-width:920px){.links{display:none}.heroGrid,.cards,.mission{grid-template-columns:1fr}.hero{padding-top:52px}.serverCard{margin-top:6px}.navin>.btn{display:none}.sectionTitle{font-size:38px}}@media(max-width:600px){h1{font-size:54px}.statrow{grid-template-columns:1fr}.ipbox{align-items:flex-start;flex-direction:column}.copy{width:100%}.cta .btn{width:100%}}
   </style>
 </head>
 <body>
   <nav class="nav">
     <div class="wrap navin">
       <div class="brand">ALTAY <b>2.1.GTAVI</b></div>
-      <div class="links"><a href="#about">Чо тут есть</a><a href="#launch">Новасти</a><a href="#join">Как зайти</a></div>
+      <div class="links"><a href="#about">Чо тут есть</a><a href="#mission">Мисии</a><a href="#join">Как зайти</a></div>
       <a class="btn secondary" href="#join">ЗАЙТИ ЩАС</a>
     </div>
   </nav>
@@ -109,104 +54,68 @@
     <section class="hero">
       <div class="wrap heroGrid">
         <div>
-          <div class="eyebrow"><span class="dot"></span> ЮЖНЫЙ ВАЙБ. СЕВЕРНЫЙ ПИНГ. АЛТАЙ.</div>
+          <div class="eyebrow"><span class="dot"></span> ЮЖНЫЙ ВАЙБ • СЕВЕРНЫЙ ПИНГ • АЛТАЙ</div>
           <h1>ALTAY <span class="hot">2.1.GTAVI</span></h1>
-          <p class="lead">Новая эра серевра официально начилася. Никаких таймиров, никакого ожидания, никакой ответсвености. Тут майнкрафт 1.21.1, рыбалла, босы, кланы, транспорт настроения и оптимизацыя которая иногда оптимизирует вас из игры.</p>
+          <p class="lead">Новая эра серевра официально начилася. Тут майнкрафт 1.21.1, рыбалла, босы, кланы, данжи, оружие, странные механики и оптимизацыя которая иногда оптимизирует тебя прямо из игры. Всё выглядит дорого, а работает как получится — фирменый Altay.</p>
           <div class="cta">
-            <a class="btn primary" href="https://workupload.com/file/YkzKJnDdssr" download>📦 СКАЧАТЬ СБОРУ</a>
+            <a class="btn primary" href="https://workupload.com/file/YkzKJnDdssr">📦 СКАЧАТЬ СБОРУ</a>
             <a class="btn secondary" href="./instructions.html">📖 КАК ЭТО УСТАНАВИТЬ</a>
             <button class="btn secondary" onclick="copyIp()">📋 КАПИРОВАТЬ IP</button>
           </div>
+          <div class="poster"><b>ALTAY NEWS:</b> рыбалла есть, Лёха где-то есть, стабильнасть временно в розыске. Если всё запустилось — нечего не трогай и делай вид что так и задумывалось.</div>
         </div>
 
         <aside class="serverCard">
+          <div class="wanted">WANTED <span>★★★★★</span></div>
           <div class="sky"><div class="sun"></div><div class="palm">🌴</div></div>
           <div class="statrow">
             <div class="stat"><small>Версия майнкрафта</small><strong>1.21.1 NeoForge</strong></div>
             <div class="stat"><small>Режым</small><strong>Survival + RPG + хаос</strong></div>
           </div>
-          <div class="ipbox">
-            <div><small class="muted">IP серевра</small><div class="ip" id="server-ip">altay2gultragps.joinmc.cloud</div></div>
-            <button class="copy" onclick="copyIp()">КОПИР</button>
-          </div>
+          <div class="ipbox"><div><small class="muted">IP серевра</small><div class="ip" id="server-ip">altay2gultragps.joinmc.cloud</div></div><button class="copy" onclick="copyIp()">КОПИР</button></div>
         </aside>
       </div>
     </section>
 
-    <div class="strip"><div class="stripInner">ALTAY 2.1.GTAVI • РЫБАЛА ЕСТЬ • ФПС МОЖЕТ БЫТЬ • ЛЕХА ПОД ВОПРОСАМ • СТАБИЛНАСТЬ НЕ ГАРАНТИРУЕТСЯ • ALTAY 2.1.GTAVI •</div></div>
+    <div class="strip"><div class="stripInner">ALTAY 2.1.GTAVI • РЫБАЛА ЕСТЬ • ФПС МОЖЕТ БЫТЬ • ЛЕХА ПОД ВОПРОСАМ • СТАБИЛНАСТЬ В РОЗЫСКЕ • ALTAY 2.1.GTAVI •</div></div>
 
-    <section id="about">
-      <div class="wrap">
-        <h2 class="sectionTitle">ЧО ВООБЩЕ ПРОИЗОШЛО</h2>
-        <p class="sectionLead">Мы взяли обычный серевр, добавили туда всего черезчур много, потом посмотрели на логи и сказали: «идеално».</p>
-        <div class="cards">
-          <article class="card"><div class="icon">🌇</div><h3>атмосфера 300%</h3><p>Неон, закаты, приключения и ощущение что щас начнётся миссия. На деле начнётся загрузка чанков но тоже красиво.</p></article>
-          <article class="card"><div class="icon">⚔️</div><h3>босы, данжы и драки</h3><p>Уникалные мобы, босы, оружи, бронь, кланы, дуэли и прочие способы потерять вещи за 4 секунды после выхода с базы.</p></article>
-          <article class="card"><div class="icon">🐟</div><h3>рыбала снова канон</h3><p>Фермерство, шахты, рыба, задания, проффесии и экономика. Можно стать богатым. Теоритически. Наверно.</p></article>
-        </div>
+    <section id="about"><div class="wrap">
+      <h2 class="sectionTitle">ЧО ВООБЩЕ ПРОИЗОШЛО</h2>
+      <p class="sectionLead">Мы взяли обычный серевр, добавили туда всего черезчур много, посмотрели на консоль с красным текстом и сказали: «идеално, выпускаем».</p>
+      <div class="cards">
+        <article class="card"><div class="icon">🌇</div><h3>атмосфера 300%</h3><p>Неон, закаты, приключения и ощущение что щас начнётся мисия. На деле начнётся прогрузка чанков, но она тоже кинематографичная.</p></article>
+        <article class="card"><div class="icon">⚔️</div><h3>босы, данжы и драки</h3><p>Кастомные босы, оружые, броня, зачаровани и данжы где сундук пустой, зато мобов там как будто они платят аренду.</p></article>
+        <article class="card"><div class="icon">🐟</div><h3>легендарная рыбалла</h3><p>Фирменая механика Altay. Можно ловить рыбу, можно не ловить рыбу, но обсуждать рыбаллу обязаны все. Иначе зачем мы это всё делали.</p></article>
+        <article class="card"><div class="icon">🏴</div><h3>кланы и местные разборки</h3><p>Создавай клан, строй базу, обьявляй войну соседу потому что он поставил забор на два блока ближе. Полная дипломатия Altay.</p></article>
+        <article class="card"><div class="icon">📉</div><h3>оптимизацыя наоборот</h3><p>Каждый патч делает сервер ещё современей. Иногда FPS меньше, зато ты начинаеш ценить каждый кадр как отдельное произведение искуства.</p></article>
+        <article class="card"><div class="icon">🧍</div><h3>Лёха</h3><p>Лёха существует. Возможно. Никто точно не знает где он, но без него сервер был бы технически менее Altay.</p></article>
       </div>
-    </section>
+    </div></section>
 
-    <section id="launch">
-      <div class="wrap">
-        <h2 class="sectionTitle">ПАТЧНОУТ ИЗ ПАРАЛЕЛЬНОЙ РЕАЛНАСТИ</h2>
-        <p class="sectionLead">Что уже завезли и что может внезапно завестись после перезапуска.</p>
-        <div class="announce">
-          <div class="panel">
-            <h3>🔥 Уже на месте</h3>
-            <ul class="list">
-              <li>💠 Minecraft 1.21.1 NeoForge и огромная сбора;</li>
-              <li>💠 кланы, босы, данжы, экономика и рыбала;</li>
-              <li>💠 новые биомы, измерения, оружия и подозрителные механики;</li>
-              <li>💠 оптимизацыя по методу «если запустилось значет готово».</li>
-            </ul>
-          </div>
-          <div class="panel">
-            <h3>🚨 Важное предупреждени</h3>
-            <ul class="list">
-              <li>⚠️ первый запуск может думать дольше чем ты;</li>
-              <li>⚠️ если всё работает — не обновляй ничо просто так;</li>
-              <li>⚠️ клиент и серевр должны иметь одинаковые контентные моды;</li>
-              <li>⚠️ увидел 3 фпс — значит синематик режим активирован.</li>
-            </ul>
-          </div>
-        </div>
+    <section id="mission"><div class="wrap">
+      <h2 class="sectionTitle">МИСИИ И НОВАСТИ</h2>
+      <p class="sectionLead">Здесь всё как в нормальной игре, только награда иногда моральная, а баги физические.</p>
+      <div class="mission">
+        <div class="panel"><span class="badge">MISSION PASSED?</span><h3>Основная мисия</h3><ul class="list"><li>💠 скачать сбору и не удалить её через 4 секунды;</li><li>💠 запустить 1.21.1 NeoForge и дождатся меню;</li><li>💠 зайти на серевр и не спрашивать почему 300 модов;</li><li>💠 найти рыбаллу;</li><li>💠 выжить после встречи с первым босом.</li></ul></div>
+        <div class="panel"><span class="badge">REWARD</span><h3>Награда</h3><ul class="list"><li><span class="money">+$000042</span> внутриигровой уверености;</li><li>⭐ +1 звезда розыска за каждый сломаный мод;</li><li>🌴 доступ к закату который нарисован CSS-ом;</li><li>🐟 шанс поймать рыбу и уважение;</li><li>🧠 знание главного правила: если работает — не трогай.</li></ul></div>
       </div>
-    </section>
+    </div></section>
 
-    <section id="join">
-      <div class="wrap">
-        <div class="join">
-          <div>
-            <span class="badge">КАК ВОЙТИ И НЕ ПОТЕРЯТСЯ</span>
-            <h2 class="sectionTitle">ЗАХОД ЗА 4 ШАГА</h2>
-            <p class="sectionLead">Если после этого не заходит, значит у майнкрафта есть своё мнение.</p>
-          </div>
-          <div class="steps">
-            <div class="step"><div class="num">1</div><div><strong>Скачай сбору.</strong><div class="muted">Кнопка сверху большая специально чтоб её увидили.</div></div></div>
-            <div class="step"><div class="num">2</div><div><strong>Устанави Minecraft 1.21.1 NeoForge.</strong><div class="muted">Не 1.21.11, не Fabric, не «почти такаяже».</div></div></div>
-            <div class="step"><div class="num">3</div><div><strong>Сделай всё по инструкции.</strong><div class="muted"><a href="./instructions.html" style="color:#ff9ec6;font-weight:900">Тут есть отдельная страница для этого ужаса →</a></div></div></div>
-            <div class="step"><div class="num">4</div><div><strong>Подключайся.</strong><div class="muted">IP: altay2gultragps.joinmc.cloud</div></div></div>
-          </div>
-          <div class="cta"><button class="btn primary" onclick="copyIp()">📋 СКОПИРОВАТЬ IP И УЙТИ В ЗАКАТ</button></div>
+    <section id="join"><div class="wrap">
+      <div class="join"><div><span class="badge">КАК ЗАЙТИ И НЕ ПРОПАСТЬ</span><h2 class="sectionTitle">ТРИ ШАГА ДО ХАОСА</h2></div>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div><b>Скачай ALTAY 2.1.GTAVI.</b><br><span class="muted">По кнопке выше. Да, именно тот архив. Да, он большой. Нет, мы не будем об этом говорить.</span></div></div>
+          <div class="step"><div class="num">2</div><div><b>Устанави по инструкцыи.</b><br><span class="muted">Minecraft 1.21.1 NeoForge. Не 1.21.11. Цыфры похожы только если смотреть очень издалека.</span></div></div>
+          <div class="step"><div class="num">3</div><div><b>Заходи на altay2gultragps.joinmc.cloud</b><br><span class="muted">Если зашол — поздравляем. Если нет — консоль уже знает почему, просто она пишет это максимально страшно.</span></div></div>
         </div>
+        <div class="cta"><a class="btn primary" href="https://workupload.com/file/YkzKJnDdssr">📦 СКАЧАТЬ</a><a class="btn secondary" href="./instructions.html">📖 ИНСТРУКЦЫЯ</a></div>
       </div>
-    </section>
+    </div></section>
   </main>
 
-  <footer>
-    <div class="wrap">© 2026 ALTAY 2.1.GTAVI. Не рокстар, но бюджет тоже куда-то пропал.</div>
-  </footer>
-
+  <footer><div class="wrap">© 2026 ALTAY 2.1.GTAVI. Серевр серьёзный. Граматика нет. Рыбалла да.</div></footer>
   <script>
-    function copyIp(){
-      const ip=document.getElementById('server-ip')?.textContent?.trim()||'altay2gultragps.joinmc.cloud';
-      navigator.clipboard.writeText(ip).then(()=>{
-        const old=document.title;
-        document.title='IP СКАПИРОВАН, ГЕНИЙ';
-        setTimeout(()=>document.title=old,1400);
-      }).catch(()=>prompt('Скапируй руками потому что браузир решил поумничать:',ip));
-    }
+    function copyIp(){const ip=document.getElementById('server-ip').textContent.trim();navigator.clipboard.writeText(ip).then(()=>{alert('IP скапираван. Теперь главное не забудь куда.');}).catch(()=>{prompt('Капируй руками, технология устала:',ip);});}
   </script>
 </body>
 </html>
