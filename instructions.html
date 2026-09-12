@@ -1,160 +1,34 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#ff4f8b" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ff4f8b">
   <title>ALTAY 2.1.GTAVI — как устанавить сбору</title>
-  <meta name="description" content="Очень серезная и очень розовая инструкция как устанавить ALTAY 2.1.GTAVI и случайно не удалить виндовс." />
+  <meta name="description" content="Очень серезная и очень розовая инструкция как устанавить ALTAY 2.1.GTAVI и случайно не удалить виндовс.">
   <style>
-    :root{
-      --bg:#09020f;
-      --bg2:#14051e;
-      --panel:rgba(20,8,29,.78);
-      --text:#fff7fb;
-      --muted:#d7c3d1;
-      --pink:#ff4f8b;
-      --orange:#ff8a3d;
-      --yellow:#ffd44d;
-      --cyan:#55e7ff;
-      --line:rgba(255,255,255,.14);
-      --shadow:0 24px 80px rgba(0,0,0,.5);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at 12% 8%,rgba(255,79,139,.38),transparent 26%),
-        radial-gradient(circle at 88% 2%,rgba(255,138,61,.28),transparent 24%),
-        radial-gradient(circle at 70% 72%,rgba(85,231,255,.13),transparent 30%),
-        linear-gradient(180deg,#16031d 0%,#09020f 48%,#050107 100%);
-      min-height:100vh;
-      overflow-x:hidden;
-    }
-    body:before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      opacity:.19;
-      background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-      background-size:44px 44px;
-      mask-image:linear-gradient(to bottom,#000,transparent 82%);
-    }
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(1080px,calc(100% - 32px));margin:auto}
-    .nav{
-      position:sticky;top:0;z-index:20;
-      backdrop-filter:blur(18px);
-      background:rgba(7,1,11,.68);
-      border-bottom:1px solid rgba(255,255,255,.08)
-    }
-    .navin{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{font-size:20px;font-weight:1000;letter-spacing:.08em;text-transform:uppercase}
-    .brand b{color:var(--pink);text-shadow:0 0 24px rgba(255,79,139,.45)}
-    .tag{font-size:11px;padding:4px 8px;border:1px solid var(--line);border-radius:999px;color:var(--yellow);margin-left:8px;vertical-align:2px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;padding:14px 18px;font-weight:950;letter-spacing:.03em;transition:.2s transform,.2s box-shadow,.2s border-color}
-    .btn:hover{transform:translateY(-2px)}
-    .primary{background:linear-gradient(135deg,var(--pink),var(--orange));color:#150611;box-shadow:0 16px 44px rgba(255,79,139,.28)}
-    .secondary{background:rgba(255,255,255,.04);border:1px solid var(--line)}
-    .hero{padding:90px 0 44px;position:relative}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;background:rgba(255,212,77,.1);border:1px solid rgba(255,212,77,.35);color:var(--yellow);font-size:12px;font-weight:900;letter-spacing:.08em}
-    h1{font-size:clamp(48px,9vw,104px);line-height:.86;letter-spacing:-.065em;margin:24px 0 20px;text-transform:uppercase;max-width:980px}
-    .gradient{background:linear-gradient(90deg,#fff 0%,#ffd1e3 24%,#ff6aa0 58%,#ff9a48 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .lead{font-size:18px;line-height:1.7;color:var(--muted);max-width:780px}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-    .hero-card{margin-top:32px;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,rgba(255,79,139,.08),rgba(255,138,61,.04));box-shadow:var(--shadow);color:#ffe8f1}
-    .hero-card b{color:var(--yellow)}
-    .steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding:18px 0 86px}
-    .step{position:relative;overflow:hidden;padding:24px;border-radius:20px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
-    .step:after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;right:-50px;top:-60px;background:radial-gradient(circle,rgba(255,79,139,.24),transparent 68%)}
-    .num{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:20px;font-weight:1000;color:#140611;background:linear-gradient(135deg,var(--yellow),var(--orange));margin-bottom:18px;box-shadow:0 10px 28px rgba(255,138,61,.18)}
-    .step h2{margin:0 0 10px;font-size:24px;letter-spacing:-.025em}
-    .step p{margin:0;color:var(--muted);font-size:16px;line-height:1.7}
-    .warning{margin-top:16px;padding:15px 16px;border-radius:14px;background:rgba(255,79,139,.08);border:1px dashed rgba(255,79,139,.55);color:#ffe1eb;line-height:1.55}
-    .wide{grid-column:1/-1}
-    .label{display:inline-block;margin-bottom:8px;color:var(--cyan);font-size:12px;font-weight:900;letter-spacing:.08em}
-    footer{padding:30px 0 48px;border-top:1px solid rgba(255,255,255,.08);color:#9d8796;font-size:14px}
-    @media(max-width:760px){
-      .steps{grid-template-columns:1fr}
-      .wide{grid-column:auto}
-      .hero{padding-top:58px}
-      .navin{height:68px}
-      h1{font-size:clamp(44px,16vw,72px)}
-    }
+    :root{--bg:#09020f;--panel:rgba(20,8,29,.78);--text:#fff7fb;--muted:#d7c3d1;--pink:#ff4f8b;--orange:#ff8a3d;--yellow:#ffd44d;--cyan:#55e7ff;--line:rgba(255,255,255,.14);--shadow:0 24px 80px rgba(0,0,0,.5)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at 12% 8%,rgba(255,79,139,.38),transparent 26%),radial-gradient(circle at 88% 2%,rgba(255,138,61,.28),transparent 24%),radial-gradient(circle at 70% 72%,rgba(85,231,255,.13),transparent 30%),linear-gradient(180deg,#16031d 0%,#09020f 48%,#050107 100%);min-height:100vh;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.19;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000,transparent 82%)}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1080px,calc(100% - 32px));margin:auto}.nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:rgba(7,1,11,.68);border-bottom:1px solid rgba(255,255,255,.08)}.navin{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-size:20px;font-weight:1000;letter-spacing:.08em;text-transform:uppercase}.brand b{color:var(--pink);text-shadow:0 0 24px rgba(255,79,139,.45)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;padding:14px 18px;font-weight:950;letter-spacing:.03em;transition:.2s transform,.2s box-shadow}.btn:hover{transform:translateY(-2px)}.primary{background:linear-gradient(135deg,var(--pink),var(--orange));color:#150611;box-shadow:0 16px 44px rgba(255,79,139,.28)}.secondary{background:rgba(255,255,255,.04);border:1px solid var(--line)}
+    .hero{padding:90px 0 44px;position:relative}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;background:rgba(255,212,77,.1);border:1px solid rgba(255,212,77,.35);color:var(--yellow);font-size:12px;font-weight:900;letter-spacing:.08em}h1{font-size:clamp(48px,9vw,104px);line-height:.86;letter-spacing:-.065em;margin:24px 0 20px;text-transform:uppercase;max-width:980px}.gradient{background:linear-gradient(90deg,#fff 0%,#ffd1e3 24%,#ff6aa0 58%,#ff9a48 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:18px;line-height:1.7;color:var(--muted);max-width:780px}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.hero-card{margin-top:32px;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,rgba(255,79,139,.08),rgba(255,138,61,.04));box-shadow:var(--shadow);color:#ffe8f1}.hero-card b{color:var(--yellow)}
+    .steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding:18px 0 86px}.step{position:relative;overflow:hidden;padding:24px;border-radius:20px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}.step:after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;right:-50px;top:-60px;background:radial-gradient(circle,rgba(255,79,139,.24),transparent 68%)}.num{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:20px;font-weight:1000;color:#140611;background:linear-gradient(135deg,var(--yellow),var(--orange));margin-bottom:18px;box-shadow:0 10px 28px rgba(255,138,61,.18)}.step h2{margin:0 0 10px;font-size:24px;letter-spacing:-.025em}.step p{margin:0;color:var(--muted);font-size:16px;line-height:1.7}.warning{margin-top:16px;padding:15px 16px;border-radius:14px;background:rgba(255,79,139,.08);border:1px dashed rgba(255,79,139,.55);color:#ffe1eb;line-height:1.55}.wide{grid-column:1/-1}.label{display:inline-block;margin-bottom:8px;color:var(--cyan);font-size:12px;font-weight:900;letter-spacing:.08em}footer{padding:30px 0 48px;border-top:1px solid rgba(255,255,255,.08);color:#9d8796;font-size:14px}
+    @media(max-width:760px){.steps{grid-template-columns:1fr}.wide{grid-column:auto}.hero{padding-top:58px}.navin{height:68px}h1{font-size:clamp(44px,16vw,72px)}}
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="wrap navin">
-      <div class="brand">ALTAY <b>2.1.GTAVI</b><span class="tag">NO TIMER</span></div>
-      <a class="btn secondary" href="./index.html">← НАЗАТ НА СЕРЕВР</a>
-    </div>
-  </nav>
-
+  <nav class="nav"><div class="wrap navin"><div class="brand">ALTAY <b>2.1.GTAVI</b></div><a class="btn secondary" href="./index.html">← НАЗАТ НА СЕРЕВР</a></div></nav>
   <main>
-    <section class="hero">
-      <div class="wrap">
-        <div class="eyebrow">🌴 ОФИЦЫАЛЬНАЯ СУПЕР МЕГА ИНСТРУКЦЫЯ</div>
-        <h1><span class="gradient">ALTAY 2.1.GTAVI</span><br>устанави и не плач</h1>
-        <p class="lead">Новая сборка стала ещё красивее, ещё тежелее и теперь выглядит будто майнкрафт уехал в отпуск в жаркий город. Таймеров до открытия больше НЕТУ ВООБЩЕ, скачал и пошол страдать сразу без ожиданья.</p>
-
-        <div class="cta">
-          <a class="btn primary" href="https://workupload.com/file/YkzKJnDdssr">📦 СКАЧАТЬ ALTAY 2.1.GTAVI</a>
-          <a class="btn secondary" href="./index.html">🏝️ ВЕРНУТСЯ НА ГЛАВНУЮ</a>
-        </div>
-
-        <div class="hero-card"><b>ВАЖНА:</b> если после установки всё запустилось с первого раза, нечего не трогай. Возможно это редкий баг при котором оно работает.</div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap steps">
-        <article class="step">
-          <div class="num">1</div>
-          <div class="label">ПЕРВЫЙ ОПАСНЫЙ ШАГ</div>
-          <h2>Скачивай архив</h2>
-          <p>Жмёш кнопку скачять выше и скачиваеш сбору. Не надо открывать архив 38 раз и искать внутри кнопку «установить», её там нету и небыло никогда.</p>
-        </article>
-
-        <article class="step">
-          <div class="num">2</div>
-          <div class="label">ВЕРСИЯ ЭТО ВАЖНА</div>
-          <h2>Minecraft 1.21.1 NeoForge</h2>
-          <p>Нужин именно <strong>1.21.1 NeoForge</strong>. Не Fabric, не Forge, не 1.21.11, не «ну цифры почти одинакавые». Они не одинакавые, майнкрафт обидется.</p>
-        </article>
-
-        <article class="step">
-          <div class="num">3</div>
-          <div class="label">ФАЙЛОВЫЙ КРИМИНАЛ</div>
-          <h2>Закинь всё в папку игры</h2>
-          <p>Открываеш архив и кидаеш <strong>ВСЁ ЧТО ТАМ ЕСТЬ</strong> в папку майнкрафта. Не выбирай глазами «этот файл красивый, этот страшный». Все значит абсолютно все.</p>
-          <div class="warning">⚠️ Если спросит заменить файлы — заменяй тока если ты реально в папке игры. Если ты случайно открыл папку фотки_2021, то лучше выйди от туда пока не поздно.</div>
-        </article>
-
-        <article class="step">
-          <div class="num">4</div>
-          <div class="label">ЗАПУСК И МОЛИТВА</div>
-          <h2>Запускай сбору</h2>
-          <p>Выбираеш Minecraft 1.21.1 NeoForge и жмеш запуск. Первый запуск может думать долго потому что там модов как будто мы собирали их с закрытыми глазами и не умели останавливаться.</p>
-        </article>
-
-        <article class="step wide">
-          <div class="num">5</div>
-          <div class="label">ФИНАЛЬНЫЙ БОСС</div>
-          <h2>Заходи на серевр и нечего больше не меняй</h2>
-          <p>Если увидил главное меню — уже почти победа. Заходи на Altay 2.1.GTAVI и проверяй что всё живое. Если фпс есть хоть какойта — значит оптимизацыя прошла успешна. Если крашнуло, прочитай ошибку, потом сделай вид что понял, потом пиши нам.</p>
-          <div class="warning">🔥 ГЛАВНОЕ ПРАВИЛО ALTAY: если работает — не обновляй моды по одному, не удаляй «непонятные библиотеки» и не ставь случайный Sodium из видео 2022 года.</div>
-        </article>
-      </div>
-    </section>
+    <section class="hero"><div class="wrap"><div class="eyebrow">🌴 ОФИЦЫАЛЬНАЯ СУПЕР МЕГА ИНСТРУКЦЫЯ</div><h1><span class="gradient">ALTAY 2.1.GTAVI</span><br>устанави и не плач</h1><p class="lead">Новая сборка стала ещё красивее, ещё тежелее и теперь выглядит будто майнкрафт уехал в отпуск в жаркий город. Скачал и пошол страдать сразу без ожиданья.</p><div class="cta"><a class="btn primary" href="https://workupload.com/file/YkzKJnDdssr">📦 СКАЧАТЬ ALTAY 2.1.GTAVI</a><a class="btn secondary" href="./index.html">🏝️ ВЕРНУТСЯ НА ГЛАВНУЮ</a></div><div class="hero-card"><b>ВАЖНА:</b> если после установки всё запустилось с первого раза, нечего не трогай. Возможно это редкий баг при котором оно работает.</div></div></section>
+    <section><div class="wrap steps">
+      <article class="step"><div class="num">1</div><div class="label">ПЕРВЫЙ ОПАСНЫЙ ШАГ</div><h2>Скачивай архив</h2><p>Жмёш кнопку скачять выше и скачиваеш сбору. Не надо открывать архив 38 раз и искать внутри кнопку «установить», её там нету и небыло никогда.</p></article>
+      <article class="step"><div class="num">2</div><div class="label">ВЕРСИЯ ЭТО ВАЖНА</div><h2>Minecraft 1.21.1 NeoForge</h2><p>Нужин именно <strong>1.21.1 NeoForge</strong>. Не Fabric, не Forge, не 1.21.11, не «ну цифры почти одинакавые». Они не одинакавые, майнкрафт обидется.</p></article>
+      <article class="step"><div class="num">3</div><div class="label">ФАЙЛОВЫЙ КРИМИНАЛ</div><h2>Закинь всё в папку игры</h2><p>Открываеш архив и кидаеш <strong>ВСЁ ЧТО ТАМ ЕСТЬ</strong> в папку майнкрафта. Не выбирай глазами «этот файл красивый, этот страшный». Все значит абсолютно все.</p><div class="warning">⚠️ Если спросит заменить файлы — заменяй тока если ты реально в папке игры. Если ты случайно открыл папку фотки_2021, то лучше выйди от туда пока не поздно.</div></article>
+      <article class="step"><div class="num">4</div><div class="label">ЗАПУСК И МОЛИТВА</div><h2>Запускай сбору</h2><p>Выбираеш Minecraft 1.21.1 NeoForge и жмеш запуск. Первый запуск может думать долго потому что там модов как будто мы собирали их с закрытыми глазами и не умели останавливаться.</p></article>
+      <article class="step wide"><div class="num">5</div><div class="label">ФИНАЛЬНЫЙ БОСС</div><h2>Заходи на серевр и нечего больше не меняй</h2><p>Если увидил главное меню — уже почти победа. Заходи на Altay 2.1.GTAVI и проверяй что всё живое. Если фпс есть хоть какойта — значит оптимизацыя прошла успешна. Если крашнуло, прочитай ошибку, потом сделай вид что понял, потом пиши нам.</p><div class="warning">🔥 ГЛАВНОЕ ПРАВИЛО ALTAY: если работает — не обновляй моды по одному, не удаляй «непонятные библиотеки» и не ставь случайный Sodium из видео 2022 года.</div></article>
+    </div></section>
   </main>
-
-  <footer>
-    <div class="wrap">© 2026 ALTAY 2.1.GTAVI. Инструкцыя официальна не официальная. Граматика сломана спецыально и очень професиональна.</div>
-  </footer>
+  <footer><div class="wrap">© 2026 ALTAY 2.1.GTAVI. Инструкцыя официальна не официальная. Граматика сломана спецыально и очень професиональна.</div></footer>
 </body>
 </html>
